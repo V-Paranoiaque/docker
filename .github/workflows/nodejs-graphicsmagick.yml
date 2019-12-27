@@ -24,6 +24,6 @@ jobs:
         uses: manusa/actions-publish-docker@master
         with:
           name: vparanoiaque/nodejs-graphicsmagick
-          username: ${{ secrets.DOCKER_HUB_USER }}
-          password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
           tag: ${{ steps.version.outputs.text }}
