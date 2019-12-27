@@ -17,13 +17,13 @@ jobs:
         id: version
         with:
           path: nodejs-graphicsmagick/VERSION
-      - name: Build the Docker image
-        run: docker build . --file nodejs-graphicsmagick/Dockerfile --tag vparanoiaque/nodejs-graphicsmagick:${{ steps.version.outputs.text }}
-      - name: Dockerize
-        if: success()
-        uses: manusa/actions-publish-docker@master
-        with:
-          name: vparanoiaque/nodejs-graphicsmagick
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-          tag: ${{ steps.version.outputs.text }}
+      - name: Build & Push to Docker Hub
+        uses: opspresso/action-docker@master
+        env:
+          USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          BUILD_PATH: "nodejs-graphicsmagick/"
+          IMAGE_NAME: "vparanoiaque/nodejs-graphicsmagick"
+          TAG_NAME: ${{ steps.version.outputs.text }}
+          LATEST: "true"
+
