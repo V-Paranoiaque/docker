@@ -12,6 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v1
       - uses: pCYSl5EDgo/cat@master
         id: version
         with:
