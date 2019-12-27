@@ -1,0 +1,16 @@
+name: Build nodejs-graphicsmagick
+
+on:
+  push:
+    paths:
+      - 'nodejs-graphicsmagick/*'
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Build the Docker image
+      run: docker build . --file nodejs-graphicsmagick/Dockerfile --tag vparanoiaque/nodejs-graphicsmagick:$(cat nodejs-graphicsmagick/Dockerfile | head -n 1 | cut -d":" -f2)
