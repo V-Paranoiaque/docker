@@ -1,0 +1,28 @@
+name: Build cron-php-mysql
+
+on:
+  push:
+    paths:
+      - 'cron-php-mysql/VERSION'
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - uses: pCYSl5EDgo/cat@master
+        id: version
+        with:
+          path: cron-php-mysql/VERSION
+      - name: Build & Push to Docker Hub
+        uses: opspresso/action-docker@master
+        env:
+          USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          BUILD_PATH: "cron-php-mysql/"
+          IMAGE_NAME: "vparanoiaque/cron-php-mysql"
+          TAG_NAME: ${{ steps.version.outputs.text }}
+          LATEST: "true"
