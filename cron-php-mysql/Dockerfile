@@ -1,4 +1,4 @@
-FROM php:7.2.26-alpine
+FROM php:7.3.13-alpine
 
 RUN docker-php-ext-install mysqli pdo_mysql
 RUN apk add --no-cache incron
