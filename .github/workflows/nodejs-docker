@@ -1,0 +1,28 @@
+name: Build nodejs-docker
+
+on:
+  push:
+    paths:
+      - 'nodejs-docker/VERSION'
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - uses: pCYSl5EDgo/cat@master
+        id: version
+        with:
+          path: nodejs-docker/VERSION
+      - name: Build & Push to Docker Hub
+        uses: opspresso/action-docker@master
+        env:
+          USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          BUILD_PATH: "nodejs-docker/"
+          IMAGE_NAME: "vparanoiaque/nodejs-docker"
+          TAG_NAME: ${{ steps.version.outputs.text }}
+          LATEST: "true"
