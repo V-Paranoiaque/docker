@@ -1,0 +1,29 @@
+name: Build php-mysql
+
+on:
+  push:
+    paths:
+      - 'php-mysql/VERSION'
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - uses: pCYSl5EDgo/cat@master
+        id: version
+        with:
+          path: php-mysql/VERSION
+      - name: Build & Push to Docker Hub
+        uses: opspresso/action-docker@master
+        env:
+          USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          BUILD_PATH: "php-mysql/"
+          IMAGE_NAME: "vparanoiaque/php-mysql"
+          TAG_NAME: ${{ steps.version.outputs.text }}
+          LATEST: "true"
+
