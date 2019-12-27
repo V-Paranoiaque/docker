@@ -3,7 +3,7 @@ name: Build nodejs-graphicsmagick
 on:
   push:
     paths:
-      - 'nodejs-graphicsmagick/*'
+      - 'nodejs-graphicsmagick/VERSION'
 
 jobs:
 
@@ -12,5 +12,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Build the Docker image
-      run: docker build . --file nodejs-graphicsmagick/Dockerfile --tag vparanoiaque/nodejs-graphicsmagick:$(cat nodejs-graphicsmagick/Dockerfile | head -n 1 | cut -d":" -f2)
+      - uses: pCYSl5EDgo/cat@master
+        id: version
+        with:
+          path: nodejs-graphicsmagick/VERSION
+      - name: Build the Docker image
+        run: docker build . --file nodejs-graphicsmagick/Dockerfile --tag vparanoiaque/nodejs-graphicsmagick:${{ steps.version.outputs.text }}
