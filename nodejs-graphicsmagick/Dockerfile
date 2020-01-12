@@ -1,5 +1,5 @@
-FROM node:12.14.0-alpine
+FROM node:12.14.1-alpine
 
 LABEL maintainer="virgil@paranoiaque.fr"
 
-RUN apk add --no-cache graphicsmagick
+RUN apk add --no-cache graphicsmagick tzdata
