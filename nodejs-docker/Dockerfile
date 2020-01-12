@@ -1,4 +1,4 @@
-FROM node:12.14.0-alpine
+FROM node:12.14.1-alpine
 
 RUN set -x && \
     apk add --no-cache -t .deps ca-certificates && \
@@ -18,7 +18,7 @@ RUN set -x && \
     apk add --no-cache -t .deps ca-certificates && \
     # Required dependencies.
     apk add --no-cache docker zlib libgcc && \
-    wget -q -O /usr/local/bin/docker-compose https://github.com/docker/compose/releases/download/1.25.0/docker-compose-Linux-x86_64 && \
+    wget -q -O /usr/local/bin/docker-compose https://github.com/docker/compose/releases/download/1.25.1/docker-compose-Linux-x86_64 && \
     chmod a+rx /usr/local/bin/docker-compose && \
     \
     # Clean-up
