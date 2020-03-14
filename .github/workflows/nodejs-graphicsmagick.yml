@@ -23,6 +23,7 @@ jobs:
           USERNAME: ${{ secrets.DOCKER_USERNAME }}
           PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
           BUILD_PATH: "nodejs-graphicsmagick/"
+          DOCKERFILE: "nodejs-graphicsmagick/Dockerfile"
           IMAGE_NAME: "vparanoiaque/nodejs-graphicsmagick"
           TAG_NAME: ${{ steps.version.outputs.text }}
           LATEST: "true"
