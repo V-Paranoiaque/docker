@@ -23,6 +23,7 @@ jobs:
           USERNAME: ${{ secrets.DOCKER_USERNAME }}
           PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
           BUILD_PATH: "nodejs-docker/"
+          DOCKERFILE:  "nodejs-docker/Dockerfile"
           IMAGE_NAME: "vparanoiaque/nodejs-docker"
           TAG_NAME: ${{ steps.version.outputs.text }}
           LATEST: "true"
