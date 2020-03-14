@@ -25,7 +25,7 @@ jobs:
           USERNAME: ${{ secrets.DOCKER_USERNAME }}
           PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
           BUILD_PATH: "cron-php-mysql/"
-          DOCKERFILE: "Dockerfile"
+          DOCKERFILE: "cron-php-mysql/Dockerfile"
           IMAGE_NAME: "vparanoiaque/cron-php-mysql"
           TAG_NAME: ${{ steps.version.outputs.text }}
           LATEST: "true"
