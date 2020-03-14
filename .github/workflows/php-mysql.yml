@@ -23,6 +23,7 @@ jobs:
           USERNAME: ${{ secrets.DOCKER_USERNAME }}
           PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
           BUILD_PATH: "php-mysql/"
+          DOCKERFILE: "php-mysql/Dockerfile"
           IMAGE_NAME: "vparanoiaque/php-mysql"
           TAG_NAME: ${{ steps.version.outputs.text }}
           LATEST: "true"
