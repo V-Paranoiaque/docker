@@ -19,10 +19,13 @@ jobs:
           path: cron-php-mysql/VERSION
       - name: Build & Push to Docker Hub
         uses: opspresso/action-docker@master
+        with:
+          args: --docker
         env:
           USERNAME: ${{ secrets.DOCKER_USERNAME }}
           PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
           BUILD_PATH: "cron-php-mysql/"
+          DOCKERFILE: "Dockerfile"
           IMAGE_NAME: "vparanoiaque/cron-php-mysql"
           TAG_NAME: ${{ steps.version.outputs.text }}
           LATEST: "true"
