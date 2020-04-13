@@ -2,6 +2,8 @@ name: Build nodejs-graphicsmagick
 
 on:
   push:
+    branches:
+      - master
     paths:
       - 'nodejs-graphicsmagick/VERSION'
 
