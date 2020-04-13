@@ -2,6 +2,8 @@ name: Build nodejs-docker
 
 on:
   push:
+    branches:
+      - master
     paths:
       - 'nodejs-docker/VERSION'
 
