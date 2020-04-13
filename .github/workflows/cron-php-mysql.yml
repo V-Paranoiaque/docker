@@ -2,6 +2,8 @@ name: Build cron-php-mysql
 
 on:
   push:
+    branches:
+      - master
     paths:
       - 'cron-php-mysql/VERSION'
 
