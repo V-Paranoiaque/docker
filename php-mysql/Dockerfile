@@ -7,7 +7,7 @@ RUN pecl install apcu imagick \
     --with-gd \
     --with-freetype-dir=/usr/include/ \
     --with-png-dir=/usr/include/ \
-    --with-jpeg-dir=/usr/include/ && \
+    --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install exif gd gettext mysqli pdo_mysql zip \
     && docker-php-ext-enable apcu imagick
 RUN apk del .deps \
