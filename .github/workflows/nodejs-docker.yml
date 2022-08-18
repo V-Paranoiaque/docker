@@ -29,4 +29,3 @@ jobs:
           IMAGE_NAME: "vparanoiaque/nodejs-docker"
           TAG_NAME: ${{ steps.version.outputs.text }}
           LATEST: "true"
-          BUILDX: "true"
