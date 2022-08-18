@@ -29,4 +29,4 @@ jobs:
           IMAGE_NAME: "vparanoiaque/php-mysql"
           TAG_NAME: ${{ steps.version.outputs.text }}
           LATEST: "true"
-
+          BUILDX: "true"
