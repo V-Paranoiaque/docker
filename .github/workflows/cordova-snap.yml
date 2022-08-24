@@ -1,0 +1,34 @@
+name: Build cordova-snap
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'cordova-snap/VERSION'
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - uses: pCYSl5EDgo/cat@master
+        id: version
+        with:
+          path: cordova-snap/VERSION
+      - name: Build & Push to Docker Hub
+        uses: opspresso/action-docker@master
+        with:
+          args: --docker
+        env:
+          USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          BUILD_PATH: "cordova-snap/"
+          DOCKERFILE: "cordova-snap/Dockerfile"
+          IMAGE_NAME: "vparanoiaque/cordova-snap"
+          TAG_NAME: ${{ steps.version.outputs.text }}
+          LATEST: "true"
+          BUILDX: "true"
