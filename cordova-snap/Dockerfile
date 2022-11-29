@@ -1,4 +1,4 @@
-FROM diddledan/snapcraft:core22
+FROM diddledani/snapcraft:core22
 
 ENV SNAPCRAFT_BUILD_ENVIRONMENT=host
 
