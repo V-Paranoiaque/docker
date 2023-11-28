@@ -1,4 +1,4 @@
-FROM php:8.2.12-fpm-alpine
+FROM php:8.3.0-fpm-alpine
 
 RUN apk add --no-cache freetype gettext gettext-libs gettext-asprintf imagemagick-libs libjpeg-turbo libpng libzip shadow zip \
     && apk add --no-cache --virtual .deps autoconf freetype-dev gettext-dev g++ imagemagick-dev libjpeg-turbo-dev libpng-dev libzip-dev make
