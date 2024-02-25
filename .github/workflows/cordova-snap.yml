@@ -6,6 +6,7 @@ on:
       - master
     paths:
       - 'cordova-snap/VERSION'
+  workflow_dispatch:
 
 jobs:
 
