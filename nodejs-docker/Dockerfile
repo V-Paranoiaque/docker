@@ -1,4 +1,4 @@
-FROM node:20.12.2-alpine
+FROM node:20.13.0-alpine
 
 RUN set -x && \
     apk add --no-cache -t .deps ca-certificates && \
