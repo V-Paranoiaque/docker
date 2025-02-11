@@ -1,4 +1,4 @@
-FROM node:20.18.1-alpine
+FROM node:20.18.3-alpine
 
 LABEL maintainer="virgil@paranoiaque.fr"
 
