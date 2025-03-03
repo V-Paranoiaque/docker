@@ -1,0 +1,36 @@
+name: Build logstash-oss
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'logstash-oss/VERSION'
+  workflow_dispatch:
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Extract Tag from Dockerfile
+        id: version
+        run: |
+          BASE_IMAGE=$(grep '^FROM' logstash-oss/Dockerfile | awk '{print $2}')
+          TAG=$(echo "$BASE_IMAGE" | cut -d':' -f2)
+          echo "Base image: $BASE_IMAGE"
+          echo "Extracted tag: $TAG"
+          echo "tag=$TAG" >> $GITHUB_OUTPUT
+      - name: Build & Push to Docker Hub
+        uses: opspresso/action-docker@master
+        env:
+          USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          BUILD_PATH: "logstash-oss/"
+          DOCKERFILE:  "logstash-oss/Dockerfile"
+          IMAGE_NAME: "vparanoiaque/logstash-oss"
+          TAG_NAME: ${{ steps.version.outputs.tag }}
+          LATEST: "true"
