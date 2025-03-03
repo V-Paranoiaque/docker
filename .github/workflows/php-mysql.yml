@@ -16,10 +16,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-      - uses: pCYSl5EDgo/cat@master
+      - name: Extract Tag from Dockerfile
         id: version
-        with:
-          path: php-mysql/VERSION
+        run: |
+          BASE_IMAGE=$(grep '^FROM' php-mysql/Dockerfile | awk '{print $2}')
+          TAG=$(echo "$BASE_IMAGE" | cut -d':' -f2)
+          echo "Base image: $BASE_IMAGE"
+          echo "Extracted tag: $TAG"
+          echo "tag=$TAG" >> $GITHUB_OUTPUT
       - name: Build & Push to Docker Hub
         uses: opspresso/action-docker@master
         env:
@@ -28,6 +32,6 @@ jobs:
           BUILD_PATH: "php-mysql/"
           DOCKERFILE: "php-mysql/Dockerfile"
           IMAGE_NAME: "vparanoiaque/php-mysql"
-          TAG_NAME: ${{ steps.version.outputs.text }}
+          TAG_NAME: ${{ steps.version.outputs.tag }}
           LATEST: "true"
           BUILDX: "true"
