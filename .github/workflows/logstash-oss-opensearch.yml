@@ -5,7 +5,7 @@ on:
     branches:
       - master
     paths:
-      - 'logstash-oss-opensearch/VERSION'
+      - 'logstash-oss-opensearch/**'
   workflow_dispatch:
 
 jobs:
