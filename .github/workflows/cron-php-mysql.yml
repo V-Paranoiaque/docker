@@ -5,7 +5,7 @@ on:
     branches:
       - master
     paths:
-      - 'cron-php-mysql/VERSION'
+      - 'cron-php-mysql/**'
   workflow_dispatch:
 
 jobs:

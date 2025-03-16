@@ -5,7 +5,7 @@ on:
     branches:
       - master
     paths:
-      - 'nodejs-docker/VERSION'
+      - 'nodejs-docker/**'
   workflow_dispatch:
 
 jobs:

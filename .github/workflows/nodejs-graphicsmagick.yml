@@ -5,7 +5,7 @@ on:
     branches:
       - master
     paths:
-      - 'nodejs-graphicsmagick/VERSION'
+      - 'nodejs-graphicsmagick/**'
   workflow_dispatch:
 
 jobs:
