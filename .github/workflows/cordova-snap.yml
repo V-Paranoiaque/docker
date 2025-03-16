@@ -5,7 +5,7 @@ on:
     branches:
       - master
     paths:
-      - 'cordova-snap/VERSION'
+      - 'cordova-snap/**'
   workflow_dispatch:
 
 jobs:
