@@ -1,4 +1,4 @@
-FROM node:22.15.0-alpine
+FROM node:23.11.0-alpine
 
 LABEL maintainer="virgil@paranoiaque.fr"
 
