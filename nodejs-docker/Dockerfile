@@ -20,7 +20,7 @@ RUN set -x && \
     apk add --no-cache -t .deps ca-certificates && \
     # Required dependencies.
     apk add --no-cache docker libgcc zlib && \
-    wget -q -O /usr/local/bin/docker-compose https://github.com/docker/compose/releases/download/v2.35.0/docker-compose-linux-x86_64 && \
+    wget -q -O /usr/local/bin/docker-compose https://github.com/docker/compose/releases/download/v2.36.0/docker-compose-linux-x86_64 && \
     chmod a+rx /usr/local/bin/docker-compose && \
     \
     # Clean-up
