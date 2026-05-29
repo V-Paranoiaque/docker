@@ -1,4 +1,4 @@
-FROM docker.elastic.co/logstash/logstash-oss:9.4.1
+FROM docker.elastic.co/logstash/logstash-oss:9.4.2
 
 RUN bin/logstash-plugin install logstash-output-opensearch
 
